@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Test: View {
+    //test
     let c: card
     var body: some View {
         c.image
