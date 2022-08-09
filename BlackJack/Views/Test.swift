@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct Test: View {
+    let c: card
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        c.image
+        let _ = print(String(describing: c.rank) + String(describing: c.suit))
     }
 }
 
 struct Test_Previews: PreviewProvider {
+
     static var previews: some View {
-        Test()
+        Test(c: playingDeck.pop()!)
     }
 }

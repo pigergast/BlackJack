@@ -14,6 +14,10 @@
 		E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3B289CE20700ED1858 /* MenuView.swift */; };
 		E7125E3F289CE33800ED1858 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3E289CE33800ED1858 /* Test.swift */; };
 		E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E40289CE54700ED1858 /* Modifiers.swift */; };
+		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
+		E78151F328A2679500B7C9D3 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F228A2679500B7C9D3 /* Hello.swift */; };
+		E78151F528A26E6400B7C9D3 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F428A26E6400B7C9D3 /* Stack.swift */; };
+		E78151F728A26ED300B7C9D3 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F628A26ED300B7C9D3 /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		E7125E3B289CE20700ED1858 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E7125E3E289CE33800ED1858 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E7125E40289CE54700ED1858 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E78151F228A2679500B7C9D3 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
+		E78151F428A26E6400B7C9D3 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		E78151F628A26ED300B7C9D3 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +65,11 @@
 		E7125E2C289CE1EA00ED1858 /* BlackJack */ = {
 			isa = PBXGroup;
 			children = (
+				E78151EF28A25F3D00B7C9D3 /* Models */,
+				E78151EE28A25F3000B7C9D3 /* Views */,
 				E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */,
-				E7125E2F289CE1EA00ED1858 /* ContentView.swift */,
 				E7125E31289CE1ED00ED1858 /* Assets.xcassets */,
 				E7125E33289CE1ED00ED1858 /* Preview Content */,
-				E7125E3B289CE20700ED1858 /* MenuView.swift */,
-				E7125E3E289CE33800ED1858 /* Test.swift */,
 				E7125E40289CE54700ED1858 /* Modifiers.swift */,
 			);
 			path = BlackJack;
@@ -74,6 +81,27 @@
 				E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E78151EE28A25F3000B7C9D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7125E3E289CE33800ED1858 /* Test.swift */,
+				E7125E2F289CE1EA00ED1858 /* ContentView.swift */,
+				E7125E3B289CE20700ED1858 /* MenuView.swift */,
+				E78151F228A2679500B7C9D3 /* Hello.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E78151EF28A25F3D00B7C9D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E78151F028A25F4B00B7C9D3 /* Card.swift */,
+				E78151F428A26E6400B7C9D3 /* Stack.swift */,
+				E78151F628A26ED300B7C9D3 /* Deck.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78151F728A26ED300B7C9D3 /* Deck.swift in Sources */,
 				E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */,
+				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
 				E7125E3F289CE33800ED1858 /* Test.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,
+				E78151F528A26E6400B7C9D3 /* Stack.swift in Sources */,
+				E78151F328A2679500B7C9D3 /* Hello.swift in Sources */,
 				E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */,
 				E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */,
 			);
