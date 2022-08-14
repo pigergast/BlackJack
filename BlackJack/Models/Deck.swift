@@ -2,21 +2,20 @@
 //  Deck.swift
 //  BlackJack
 //
-//  Created by Hieu Le Pham Ngoc on 09/08/2022.
+//  Created by Oggy on 14/08/2022.
 //
 
 import Foundation
 
-
-
-func makeDeck() -> Stack<card>{
-    var deck = Stack<card>()
-    let cards = generateDeck().shuffled()
-    for card in cards {
-        deck.push(card)
+struct Deck {
+    var cards : [card]
+    
+    init() {
+        cards = generateDeck().shuffled()
     }
-    return deck
+    mutating func drawCard() -> card {
+        return cards.removeLast()
+    }
 }
 
-var playingDeck = makeDeck();
-
+var gameDeck = Deck()

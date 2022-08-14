@@ -17,8 +17,8 @@ struct Test: View {
 }
 
 struct Test_Previews: PreviewProvider {
-
+    
     static var previews: some View {
-        Test(c: playingDeck.pop()!)
+        Test(c: gameDeck.drawCard())
     }
 }
