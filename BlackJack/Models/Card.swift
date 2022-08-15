@@ -73,15 +73,5 @@ struct card: Equatable{
 }
 
 
-func generateDeck() -> [card]{
-    var cards =  [card]()
-    for suit in Suits.allCases{
-        for rank in Ranks.allCases{
-            cards.append(card.init(suit: suit, rank: rank))
-            print(String(describing: rank) + String(describing: suit))
-        }
-    }
-    return cards
-}
 let standardDeck = generateDeck()
 let cardTest = card.init(suit: Suits.HEART, rank: Ranks.ACE)

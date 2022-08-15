@@ -16,6 +16,9 @@ struct Deck {
     mutating func drawCard() -> card {
         return cards.removeLast()
     }
+    mutating func newDeck() {
+        cards = generateDeck().shuffled()
+    }
 }
 
 var gameDeck = Deck()
