@@ -8,20 +8,62 @@
 import SwiftUI
 
 struct GameView: View {
-    var body: some View {
+    @State var gameDeck = Deck()
+    @State var dealerHand :[card] = []
+    @State var playerHand :[card] = []
+    @State var playerMoney : Int = 100
+    @State private var highscore = UserDefaults.standard.integer(forKey: "highscore")
+    @State var bet = 10
+    	
+    
+    var body: some View {		
         VStack{
-            HStack{
-                Image("BACK")
-                Image("BACK")
-                Image("BACK")
+            HStack {
+                HStack{
+                    Text("Money")
+                        .font(.system(size: 22, weight: .medium))
+                    .multilineTextAlignment(.leading)
+                    Text("100")
+                        .font(.system(size: 22, weight: .medium))
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
+                .background(
+                    Capsule()
+                        .foregroundColor(.green)
+                        .opacity(0.4)
+            )
+                Spacer()
+                HStack{
+                    Text("High\nScore")
+                        .font(.system(size: 22, weight: .medium))
+                    .multilineTextAlignment(.leading)
+                    Text("100")
+                        .font(.system(size: 22, weight: .medium))
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
+                .background(
+                    Capsule()
+                        .foregroundColor(.yellow)
+                        .opacity(0.4)
+            )
             }
             Spacer()
             HStack{
                 Image("BACK").resizable()
-                    .scaledToFit()
-                    .frame(minWidth: 20, idealWidth: 40, maxWidth: 100)
-                    .shadow(color: .black, radius: 3)
+                    .modifier(CardModifier())
+                Image("BACK").resizable()
+                    .modifier(CardModifier())
             }
+            Spacer()
+            HStack{
+                Image("BACK").resizable()
+                    .modifier(CardModifier())
+                Image("BACK").resizable()
+                    .modifier(CardModifier())
+            }
+            Spacer()
         }
     }
 }
