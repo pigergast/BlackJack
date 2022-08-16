@@ -10,8 +10,19 @@ import SwiftUI
 struct CardModifier: ViewModifier{
     func body(content: Content) -> some View {
            content
-            .scaledToFit()
-            .frame(minWidth: 20, idealWidth: 40, maxWidth: 50)
+            .scaledToFit()	
+            .frame(minWidth: 30, idealWidth: 50, maxWidth: 70)
             .shadow(color: .black, radius: 3)
+       }
+}
+struct CapsuleModifier: ViewModifier{
+    func body(content: Content) -> some View {
+           content
+            .padding(.vertical, 10)
+            .padding(.horizontal, 20)
+            .background(
+                Capsule()
+                    .foregroundColor(.green)
+                )
        }
 }
