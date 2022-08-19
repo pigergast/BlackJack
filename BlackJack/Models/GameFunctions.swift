@@ -47,7 +47,7 @@ func cardValue(c: card) -> Int {
         return 11
     }
 }
-func handValue(hand: [card]){
+func handValue(hand: [card]) -> Int{
     var value: Int = 0
     var aceNum : Int = 0
     for card in hand
@@ -67,5 +67,6 @@ func handValue(hand: [card]){
             break
         }
     }
+    return value;
     
 }
