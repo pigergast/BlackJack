@@ -31,7 +31,7 @@ enum Ranks: String, CaseIterable{
     case ACE
 }
 
-struct card: Equatable{
+struct card: Equatable, Hashable{
     var suit: Suits
     var rank: Ranks
     var imageName: String {
@@ -75,3 +75,5 @@ struct card: Equatable{
 
 let standardDeck = generateDeck()
 let cardTest = card.init(suit: Suits.HEART, rank: Ranks.ACE)
+
+let cardBack = card.init(suit: Suits.HEART, rank: Ranks.ACE)

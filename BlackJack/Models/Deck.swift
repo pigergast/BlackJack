@@ -21,4 +21,4 @@ struct Deck {
     }
 }
 
-var gameDeck = Deck()
+var testDeck = Deck()
