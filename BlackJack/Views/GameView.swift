@@ -32,6 +32,13 @@ struct GameView: View {
         }
     }
     
+    func checkUpdateHighscore(){
+        if (playerMoney >  UserDefaults.standard.double(forKey: "highscore"))
+        {
+            UserDefaults.standard.set(playerMoney, forKey: "highscore")
+            highscore =  UserDefaults.standard.double(forKey: "highscore")
+        }
+    }
     
     func handWin() {
         roundWin = true
@@ -53,6 +60,7 @@ struct GameView: View {
                 playerMoney += betAmount * 1.5
             }
         }
+        checkUpdateHighscore()
     }
     
     func checkPlayerStatus() {
