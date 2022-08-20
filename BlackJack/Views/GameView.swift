@@ -11,18 +11,19 @@ struct GameView: View {
     @State var gameDeck = Deck()
     @State var dealerHand :[card] = []
     @State var playerHand :[card] = []
-    @State var playerMoney : Int = 100
-    @State private var highscore = UserDefaults.standard.integer(forKey: "highscore")
-    @State var betAmount = 10
-    @State var Bet10 = true
-    @State var Bet20 = false
+    @State var playerMoney : Double = 100
+    @State private var highscore = UserDefaults.standard.double(forKey: "highscore")
+    @State var betAmount: Double = 10
     @State var showIntro = true
     @State var gameInProgress = true
     @State var gameLoss = false
     @State var gameWin = false
+    @State var roundBust = false
+    @State var roundWin = false
     @State var doubleDown = false
     
-    func bust(){
+    func lose(){
+        roundBust = true
         if (doubleDown == true){
             playerMoney -= (betAmount * 2)
         }
@@ -33,24 +34,71 @@ struct GameView: View {
     
     
     func handWin() {
+        roundWin = true
         if (doubleDown == true){
-            playerMoney += (betAmount * 2)
+            if(handValue(hand: playerHand) != 21)
+            {
+                playerMoney += (betAmount * 2)
+            }
+            else {
+                playerMoney += (betAmount * 2 * 1.5)
+            }
         }
         else {
-            playerMoney += betAmount
+            if(handValue(hand: playerHand) != 21)
+            {
+                playerMoney += betAmount
+            }
+            else {
+                playerMoney += betAmount * 1.5
+            }
         }
     }
     
     func checkPlayerStatus() {
         if (handValue(hand: playerHand) > 21){
-            bust()
+            lose()
         }
     }
+    func dealerAction() {
+        if(!roundBust && !roundWin)
+        {
+            while(handValue(hand: dealerHand) < 17){
+                dealerHand.append(gameDeck.drawCard())
+            }
+            if(handValue(hand: dealerHand) > 21)
+            {
+                if(handValue(hand: playerHand) > 21)
+                {
+                    lose()
+                    return
+                }
+                else {
+                    handWin()
+                    return
+                }
+            }
+            if (handValue(hand: playerHand) > handValue(hand: dealerHand))
+            {
+                handWin()
+                return
+            }
+            else{
+                lose()
+                return
+            }
+        }
+    }
+    
+    
     
     func gameBegin(){
         gameDeck.newDeck()
         dealerHand.removeAll()
         playerHand.removeAll()
+        roundWin = false
+        roundBust = false
+        doubleDown = false
         for _ in 1...2{
             playerHand.append(gameDeck.drawCard())
             dealerHand.append(gameDeck.drawCard())
@@ -58,65 +106,57 @@ struct GameView: View {
     }
     
     func hit() {
-        playerHand.append(gameDeck.drawCard())
+        if(!roundBust && !roundWin && !doubleDown)
+        {
+            playerHand.append(gameDeck.drawCard())
+            checkPlayerStatus()
+        }
     }
     
     var body: some View {
         ZStack {
-      
             VStack{
                 HStack {
-                    HStack{
-                        Text("Money")
-                            .font(.system(size: 22, weight: .medium))
-                            .multilineTextAlignment(.leading)
-                        Text("\(playerMoney)")
-                            .font(.system(size: 22, weight: .medium))
-                    }
-                    .modifier(CapsuleModifier())
-                    
+                    playerScore
                     
                     Spacer()
-                    HStack{
-                        Text("High Score")
-                            .font(.system(size: 22, weight: .medium))
-                            .multilineTextAlignment(.leading)
-                        Text("\(highscore)")
-                            .font(.system(size: 22, weight: .medium))
-                    }
-                    .modifier(CapsuleModifier()
-                    )
-                }.frame(width: UIScreen.main.bounds.width - 20, height: 120)
+                    
+                    highScore
+                }.frame(width: UIScreen.main.bounds.width, height: 120)
                 Spacer()
                 ZStack{
-                    CardDeck().offset(x: -130)
+                    HStack {
+                        CardDeck()
+                        Spacer()
+                    }
                     VStack{
                         Spacer()
                         HStack{
-                        if(gameInProgress){
-                            HStack{
-                                ForEach(dealerHand, id: \.self) { card in
-                                    card.image.resizable().modifier(CardModifier())
+                            if(gameInProgress){
+                                HStack{
+                                    ForEach(dealerHand, id: \.self) { card in
+                                        card.image.resizable().modifier(CardModifier())
+                                    }
                                 }
                             }
-                        }
                         }.frame(height: 100)
                         Spacer()
                             .frame(height:130)
                         HStack{
-                        if(gameInProgress){
-                            HStack{
-                                ForEach(playerHand, id: \.self) { card in
-                                    card.image.resizable().modifier(CardModifier())
+                            if(gameInProgress){
+                                HStack{
+                                    ForEach(playerHand, id: \.self) { card in
+                                        card.image.resizable().modifier(CardModifier())
+                                    }
                                 }
                             }
-                        }
                         }.frame(width: UIScreen.main.bounds.width - 20, height: 100)
                         Spacer()
                     }
                 }
                 HStack{
                     Button {
+                        betAmount = 10
                     } label: {
                         Text("Bet 10")
                             .font(.system(size: 22, weight: .heavy))
@@ -126,7 +166,21 @@ struct GameView: View {
                             )
                     }
                     Spacer()
+                    if(roundBust || roundWin) {
+                        Button {
+                            gameBegin()
+                        } label: {
+                            Text("Next round")
+                                .font(.system(size: 22, weight: .heavy))
+                                .foregroundColor(.black)
+                                .background(
+                                    Capsule().frame(width: 150, height: 30)
+                                )
+                        }
+                    }
+                    Spacer()
                     Button {
+                        betAmount = 20
                     } label: {
                         Text("Bet 20")
                             .font(.system(size: 22, weight: .heavy))
@@ -141,7 +195,6 @@ struct GameView: View {
                     Spacer()
                     Button {
                         hit()
-                        checkPlayerStatus()
                     } label: {
                         Text("Hit")
                             .font(.system(size: 22, weight: .heavy))
@@ -152,6 +205,8 @@ struct GameView: View {
                     }
                     Spacer()
                     Button {
+                        hit()
+                        doubleDown = true
                     } label: {
                         Text("Double")
                             .font(.system(size: 22, weight: .heavy))
@@ -162,6 +217,7 @@ struct GameView: View {
                     }
                     Spacer()
                     Button {
+                        dealerAction()
                     } label: {
                         Text("Stand")
                             .font(.system(size: 22, weight: .heavy))
@@ -175,24 +231,13 @@ struct GameView: View {
             }
             Rectangle().fill(.ultraThinMaterial).ignoresSafeArea()
                 .opacity(showIntro ? 1 : 0)
-            if(!gameInProgress){
-                Button {
-                    gameInProgress = true
-                    gameBegin()
-                } label: {
-                    Capsule().frame(width: 150, height: 100).foregroundColor(.yellow)
-                        .overlay {
-                            Text("Continue?")
-                                .font(.system(size: 22, weight: .heavy))
-                                .foregroundColor(.black)
-                        }
-                }
-            }
             if(showIntro){
                 Button {
                     gameInProgress = true
                     showIntro = false
                     gameBegin()
+                    
+                    
                 } label: {
                     Capsule().frame(width: 150, height: 100).foregroundColor(.yellow)
                         .overlay {
@@ -205,6 +250,33 @@ struct GameView: View {
         }
     }
 }
+
+extension GameView{
+    var playerScore : some View{
+        HStack{
+            Text("💵")
+                .font(.system(size: 22, weight: .medium))
+                .multilineTextAlignment(.leading)
+            Text("\(Int(playerMoney))")
+                .font(.system(size: 22, weight: .medium))
+        }
+        .modifier(CapsuleModifier())
+    }
+    var highScore : some View {
+        HStack{
+            Text("High Score")
+                .font(.system(size: 22, weight: .medium))
+                .multilineTextAlignment(.leading)
+            Text("\(Int(highscore))")
+                .font(.system(size: 22, weight: .medium))
+        }
+        .modifier(CapsuleModifier()
+        )
+    }
+}
+
+
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
