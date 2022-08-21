@@ -16,11 +16,10 @@
 		E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E31289CE1ED00ED1858 /* Assets.xcassets */; };
 		E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */; };
 		E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3B289CE20700ED1858 /* MenuView.swift */; };
-		E7125E3F289CE33800ED1858 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3E289CE33800ED1858 /* Test.swift */; };
 		E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E40289CE54700ED1858 /* Modifiers.swift */; };
 		E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73B826428AF5FE100588A2E /* CardDeck.swift */; };
 		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
-		E78151F328A2679500B7C9D3 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F228A2679500B7C9D3 /* Hello.swift */; };
+		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +33,10 @@
 		E7125E31289CE1ED00ED1858 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7125E3B289CE20700ED1858 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		E7125E3E289CE33800ED1858 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E7125E40289CE54700ED1858 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		E73B826428AF5FE100588A2E /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		E78151F228A2679500B7C9D3 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
+		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +99,11 @@
 		E78151EE28A25F3000B7C9D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7125E3E289CE33800ED1858 /* Test.swift */,
 				E7125E2F289CE1EA00ED1858 /* ContentView.swift */,
 				E7125E3B289CE20700ED1858 /* MenuView.swift */,
-				E78151F228A2679500B7C9D3 /* Hello.swift */,
 				DA79E36B28AAB61D0062FABB /* GameView.swift */,
 				E73B826428AF5FE100588A2E /* CardDeck.swift */,
+				E7AB2EC928B2217300205067 /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,13 +190,12 @@
 			files = (
 				E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */,
 				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
-				E7125E3F289CE33800ED1858 /* Test.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,
 				DA79E36C28AAB61D0062FABB /* GameView.swift in Sources */,
 				DAA5480E28A94B430097953E /* Deck.swift in Sources */,
 				E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */,
-				E78151F328A2679500B7C9D3 /* Hello.swift in Sources */,
 				DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */,
+				E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */,
 				E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */,
 				E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */,
 				DA79E36A28AAA4E40062FABB /* GameFunctions.swift in Sources */,

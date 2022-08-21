@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Test(c: standardDeck[0])
+        MenuView()
     }
 }
 

@@ -10,7 +10,8 @@ import SwiftUI
 struct MenuView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: Hello()) { Capsule().modifier(MenuModifier())}
+            NavigationLink(destination: GameView()) { Capsule().modifier(MenuModifier())}
+            NavigationLink(destination: LeaderboardView()) { Capsule().modifier(MenuModifier())}
         }
     }
 }

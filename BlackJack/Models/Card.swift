@@ -40,6 +40,7 @@ struct card: Equatable, Hashable{
     var image: Image{
         Image(imageName)
     }
+    
     func cardValue(c: card) -> Int {
         switch c.rank{
         case .TWO:
@@ -76,4 +77,4 @@ struct card: Equatable, Hashable{
 let standardDeck = generateDeck()
 let cardTest = card.init(suit: Suits.HEART, rank: Ranks.ACE)
 
-let cardBack = card.init(suit: Suits.HEART, rank: Ranks.ACE)
+var cardBack = card.init(suit: Suits.HEART, rank: Ranks.ACE)

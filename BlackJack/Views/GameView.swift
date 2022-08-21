@@ -10,18 +10,20 @@ import SwiftUI
 struct GameView: View {
     @State var gameDeck = Deck()
     @State var dealerHand :[card] = []
-    @State var playerHand :[card] = []
+    //@State var playerHand :[card] =
+    //(UserDefaults.standard.object(forKey: "playerHand") as?  [card] ?? [])
+    @State var playerHand: [card] = []
     @State var playerMoney : Double = 100
-    @State private var highscore = UserDefaults.standard.double(forKey: "highscore")
+    @State private var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
     @State var betAmount: Double = 10
     @State var showIntro = true
-    @State var gameInProgress = true
-    @State var gameLoss = false
+    @State var gameLoss = true
     @State var gameWin = false
     @State var roundBust = false
     @State var roundWin = false
     @State var doubleDown = false
-    
+    @State var doubleAvailable = true
+    @Environment(\.presentationMode) var presentationMode: Binding
     func lose(){
         roundBust = true
         if (doubleDown == true){
@@ -30,13 +32,17 @@ struct GameView: View {
         else{
             playerMoney -= betAmount
         }
+        if(playerMoney <= 0)
+        {
+            gameLoss = true
+        }
     }
     
     func checkUpdateHighscore(){
-        if (playerMoney >  UserDefaults.standard.double(forKey: "highscore"))
+        if (playerMoney >  highscore.last ?? 100)
         {
-            UserDefaults.standard.set(playerMoney, forKey: "highscore")
-            highscore =  UserDefaults.standard.double(forKey: "highscore")
+            highscore.append(playerMoney)
+            UserDefaults.standard.set(highscore, forKey: "highScoreList")
         }
     }
     
@@ -72,7 +78,9 @@ struct GameView: View {
         if(!roundBust && !roundWin)
         {
             while(handValue(hand: dealerHand) < 17){
-                dealerHand.append(gameDeck.drawCard())
+                withAnimation (.easeInOut(duration: 0.5)){
+                    dealerHand.append(gameDeck.drawCard())
+                }
             }
             if(handValue(hand: dealerHand) > 21)
             {
@@ -98,15 +106,20 @@ struct GameView: View {
         }
     }
     
+    func newGame(){
+        gameLoss = false
+        playerMoney = 100
+        newRound()
+    }
     
-    
-    func gameBegin(){
+    func newRound(){
         gameDeck.newDeck()
-        dealerHand.removeAll()
-        playerHand.removeAll()
+        dealerHand  = []
+        playerHand = []
         roundWin = false
         roundBust = false
         doubleDown = false
+        doubleAvailable = true
         for _ in 1...2{
             playerHand.append(gameDeck.drawCard())
             dealerHand.append(gameDeck.drawCard())
@@ -116,14 +129,32 @@ struct GameView: View {
     func hit() {
         if(!roundBust && !roundWin && !doubleDown)
         {
-            playerHand.append(gameDeck.drawCard())
+            doubleAvailable = false
+            withAnimation (.easeInOut(duration: 0.5)){
+                playerHand.append(gameDeck.drawCard())
+            }
             checkPlayerStatus()
         }
     }
     
     var body: some View {
         ZStack {
+            RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color.black]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
             VStack{
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        
+                        Image(systemName: "arrow.left.square.fill")
+                            .foregroundColor(.black)
+                            .frame(width: 45, height: 45)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                    }
+                .padding(.leading,10)
+                    Spacer()
+                }
                 HStack {
                     playerScore
                     
@@ -140,10 +171,21 @@ struct GameView: View {
                     VStack{
                         Spacer()
                         HStack{
-                            if(gameInProgress){
-                                HStack{
+                            HStack{
+                                if(roundWin || roundBust){
                                     ForEach(dealerHand, id: \.self) { card in
                                         card.image.resizable().modifier(CardModifier())
+                                    }
+                                }
+                                else {
+                                    if(!dealerHand.isEmpty)
+                                    {
+                                        dealerHand[0].image.resizable().modifier(CardModifier())
+                                        ForEach(0...dealerHand.count, id: \.self) { card in
+                                            if(card > 1){
+                                                Image("BACK").resizable().modifier(CardModifier())
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -151,11 +193,9 @@ struct GameView: View {
                         Spacer()
                             .frame(height:130)
                         HStack{
-                            if(gameInProgress){
-                                HStack{
-                                    ForEach(playerHand, id: \.self) { card in
-                                        card.image.resizable().modifier(CardModifier())
-                                    }
+                            HStack{
+                                ForEach(playerHand, id: \.self) { card in
+                                    card.image.resizable().modifier(CardModifier())
                                 }
                             }
                         }.frame(width: UIScreen.main.bounds.width - 20, height: 100)
@@ -171,12 +211,17 @@ struct GameView: View {
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(width: 80, height: 30)
+                                    .opacity((betAmount == 10) ? 1.0 : 0.3 )
+                                    .animation(.easeInOut)
                             )
                     }
                     Spacer()
                     if(roundBust || roundWin) {
                         Button {
-                            gameBegin()
+                            withAnimation(.easeInOut) {
+                                newRound()
+                            }
+                            
                         } label: {
                             Text("Next round")
                                 .font(.system(size: 22, weight: .heavy))
@@ -195,6 +240,8 @@ struct GameView: View {
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(width: 80, height: 30)
+                                    .opacity((betAmount == 20) ? 1.0 : 0.3 )
+                                    .animation(.easeInOut)
                             )
                     }
                 }.padding(.horizontal, 10)
@@ -209,6 +256,9 @@ struct GameView: View {
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(minWidth: 50, idealWidth: 70, maxWidth: 100, minHeight: 35)
+                                    .foregroundColor((doubleDown || roundBust || roundWin) ? .red : .green)
+                                    .animation(.easeInOut)
+                                
                             )
                     }
                     Spacer()
@@ -221,6 +271,9 @@ struct GameView: View {
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(minWidth: 100, minHeight: 35)
+                                    .foregroundColor(doubleAvailable ? .green : .red)
+                                    .animation(.easeInOut)
+                                
                             )
                     }
                     Spacer()
@@ -232,6 +285,8 @@ struct GameView: View {
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(minWidth: 100, minHeight: 35)
+                                    .foregroundColor((roundWin || roundBust) ? .red : .green)
+                                    .animation(.easeInOut)
                             )
                     }
                     Spacer()
@@ -241,10 +296,8 @@ struct GameView: View {
                 .opacity(showIntro ? 1 : 0)
             if(showIntro){
                 Button {
-                    gameInProgress = true
                     showIntro = false
-                    gameBegin()
-                    
+                    newRound()
                     
                 } label: {
                     Capsule().frame(width: 150, height: 100).foregroundColor(.yellow)
@@ -255,7 +308,30 @@ struct GameView: View {
                         }
                 }
             }
-        }
+            if(gameLoss){
+                VStack{
+                    RoundedRectangle(cornerRadius: 20).frame(width: 200, height: 200)
+                        .foregroundColor(Color("CrimsonRed")).overlay {
+                            VStack{
+                                Text(
+                                    "You ran out of money!"
+                                ).fontWeight(.bold).foregroundColor(.white)
+                                Button {
+                                    newGame()
+                                } label: {
+                                    Capsule().frame(width: 100, height: 50).foregroundColor(.green)
+                                        .overlay {
+                                            Text("Restart?")
+                                                .font(.system(size: 22, weight: .heavy))
+                                                .foregroundColor(.white)
+                                        }
+                                }
+                                
+                            }
+                        }
+                }
+            }
+        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
     }
 }
 
@@ -275,7 +351,7 @@ extension GameView{
             Text("High Score")
                 .font(.system(size: 22, weight: .medium))
                 .multilineTextAlignment(.leading)
-            Text("\(Int(highscore))")
+            Text("\(Int(highscore.last ?? 100))")
                 .font(.system(size: 22, weight: .medium))
         }
         .modifier(CapsuleModifier()
