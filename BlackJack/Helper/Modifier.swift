@@ -26,3 +26,18 @@ struct CapsuleModifier: ViewModifier{
                 )
        }
 }
+struct PlayModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content.frame(width: 200, height: 75, alignment: .center).overlay {
+            Text("Play").foregroundColor(.white)
+        }
+    }
+}
+struct LeaderboardModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content.frame(width: 200, height: 75, alignment: .center).overlay {
+            Text("Leaderboard").foregroundColor(.white)
+        }
+    }
+}
+

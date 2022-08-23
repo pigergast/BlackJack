@@ -12,12 +12,14 @@ struct GameView: View {
     @State var dealerHand :[card] = []
     //@State var playerHand :[card] =
     //(UserDefaults.standard.object(forKey: "playerHand") as?  [card] ?? [])
+    @State var roundsWon : Int = UserDefaults.standard.integer(forKey: "roundsWon")
+    @State var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
     @State var playerHand: [card] = []
-    @State var playerMoney : Double = 100
+    @State var playerMoney : Double = 600
     @State private var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
     @State var betAmount: Double = 10
     @State var showIntro = true
-    @State var gameLoss = true
+    @State var gameLoss = false
     @State var gameWin = false
     @State var roundBust = false
     @State var roundWin = false
@@ -25,6 +27,8 @@ struct GameView: View {
     @State var doubleAvailable = true
     @Environment(\.presentationMode) var presentationMode: Binding
     func lose(){
+        roundsLost += 1
+        UserDefaults.standard.set(roundsLost, forKey: "roundsLost")
         roundBust = true
         if (doubleDown == true){
             playerMoney -= (betAmount * 2)
@@ -47,6 +51,8 @@ struct GameView: View {
     }
     
     func handWin() {
+        roundsWon += 1
+        UserDefaults.standard.set(roundsWon, forKey: "roundsWon")
         roundWin = true
         if (doubleDown == true){
             if(handValue(hand: playerHand) != 21)
@@ -265,13 +271,14 @@ struct GameView: View {
                     Button {
                         hit()
                         doubleDown = true
+                        doubleAvailable = false
                     } label: {
                         Text("Double")
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(minWidth: 100, minHeight: 35)
-                                    .foregroundColor(doubleAvailable ? .green : .red)
+                                    .foregroundColor((doubleAvailable && !roundWin && !roundBust) ? .green : .red)
                                     .animation(.easeInOut)
                                 
                             )
@@ -343,8 +350,7 @@ extension GameView{
                 .multilineTextAlignment(.leading)
             Text("\(Int(playerMoney))")
                 .font(.system(size: 22, weight: .medium))
-        }
-        .modifier(CapsuleModifier())
+        }        .modifier(CapsuleModifier())
     }
     var highScore : some View {
         HStack{

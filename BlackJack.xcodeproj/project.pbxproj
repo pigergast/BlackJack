@@ -16,10 +16,11 @@
 		E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E31289CE1ED00ED1858 /* Assets.xcassets */; };
 		E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */; };
 		E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3B289CE20700ED1858 /* MenuView.swift */; };
-		E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E40289CE54700ED1858 /* Modifiers.swift */; };
 		E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73B826428AF5FE100588A2E /* CardDeck.swift */; };
 		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
 		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
+		E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B228B49B4D000F7DEB /* Achievements.swift */; };
+		E7CBB4B528B4B5BA000F7DEB /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +34,11 @@
 		E7125E31289CE1ED00ED1858 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7125E3B289CE20700ED1858 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		E7125E40289CE54700ED1858 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		E73B826428AF5FE100588A2E /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		E7CBB4B228B49B4D000F7DEB /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
+		E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				DA79E37228AAC5BB0062FABB /* Modifier.swift */,
+				E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -83,7 +86,6 @@
 				E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */,
 				E7125E31289CE1ED00ED1858 /* Assets.xcassets */,
 				E7125E33289CE1ED00ED1858 /* Preview Content */,
-				E7125E40289CE54700ED1858 /* Modifiers.swift */,
 			);
 			path = BlackJack;
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 				E78151F028A25F4B00B7C9D3 /* Card.swift */,
 				DAA5480D28A94B430097953E /* Deck.swift */,
 				DA79E36928AAA4E40062FABB /* GameFunctions.swift */,
+				E7CBB4B228B49B4D000F7DEB /* Achievements.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */,
+				E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */,
 				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,
 				DA79E36C28AAB61D0062FABB /* GameView.swift in Sources */,
@@ -197,7 +201,7 @@
 				DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */,
 				E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */,
 				E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */,
-				E7125E41289CE54700ED1858 /* Modifiers.swift in Sources */,
+				E7CBB4B528B4B5BA000F7DEB /* SoundPlayer.swift in Sources */,
 				DA79E36A28AAA4E40062FABB /* GameFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

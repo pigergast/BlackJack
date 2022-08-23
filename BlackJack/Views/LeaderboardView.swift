@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LeaderboardView: View {
     var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
+    var roundsWon : Int = UserDefaults.standard.integer(forKey: "roundsWon")
+    var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
     var scoreDisplay: [Double]
     let asianCars = ["Honda","Nissan","Suzuki"]
     init() {
@@ -20,25 +22,51 @@ struct LeaderboardView: View {
                 List {
                     // 2.
                     Section(header:
-                        Text("Your Highscores")) {
-                            ForEach(0 ..< scoreDisplay.count) {
-                                Text("\(Int(scoreDisplay[$0]))")
-                            }
+                        HStack {
+                        Image(systemName: "list.number").foregroundColor(.blue)
+                            .font(.system(size:30))
+                            Text("Your Highscores")
+                        })  {
+                        ForEach(0 ..< scoreDisplay.count) {
+                            Text("\(Int(scoreDisplay[$0]))$")
                         }
-                    // 3.
+                               }
+
                     Section(header:
                         HStack {
-                            Image(systemName: "car")
-                            Text("Asian Cars")
-                        }
-                    // 4.
-                    , footer: Text("This is a example list of a few car brands").font(.footnote))  {
-                                   ForEach(0 ..< asianCars.count) {
-                                       Text(self.asianCars[$0])
-                                   }
+                        Image(systemName: "star.circle.fill").foregroundColor(.yellow)
+                            .font(.system(size:30))
+                            Text("Your Achievements")
+                        })  {
+                           
+                                Text("\(bronze.achievementText)\n\(bronze.requirementText)" )
+                                    .opacity(roundsWon >= bronze.requirement ? 1 : 0.3)
+                                    .foregroundColor(roundsWon >= bronze.requirement ? .blue : .gray)
+                                Text("\(silver.achievementText)\n\(silver.requirementText)" ).opacity(roundsWon >= silver.requirement ? 1 : 0.3)
+                                    .foregroundColor(roundsWon >= silver.requirement ? .blue : .gray)
+                            
+                                Text("\(gold.achievementText)\n\(gold.requirementText)" )
+                                    .opacity(roundsWon >= gold.requirement ? 1 : 0.3)
+                                    .foregroundColor(roundsWon >= gold.requirement ? .blue : .gray)
+                            Text("\(rich.achievementText)\n\(rich.requirementText)" )
+                                .opacity(Int(scoreDisplay[0]) >= rich.requirement ? 1 : 0.3)
+                                .foregroundColor(Int(scoreDisplay[0]) >= rich.requirement ? .blue : .gray)
+                            Text("\(richer.achievementText)\n\(richer.requirementText)" )
+                                .opacity(Int(scoreDisplay[0]) >= richer.requirement ? 1 : 0.3)
+                                .foregroundColor(Int(scoreDisplay[0]) >= richer.requirement ? .blue : .gray)
+                            
+                            }
+                    Section(header:
+                        HStack {
+                        Image(systemName: "list.number").foregroundColor(.blue)
+                            .font(.system(size:30))
+                            Text("Statistics")
+                        })  {
+                            Text("😃Rounds Won: \(roundsWon)")
+                            Text("🙃Rounds Lost: \(roundsLost)")
                                }
                 
-                } .navigationBarTitle("Leaderboard")
+                } .navigationBarTitle("Statistics")
             }
                
         }
