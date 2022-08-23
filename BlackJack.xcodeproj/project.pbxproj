@@ -21,6 +21,13 @@
 		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
 		E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B228B49B4D000F7DEB /* Achievements.swift */; };
 		E7CBB4B528B4B5BA000F7DEB /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */; };
+		E7CBB4B828B4BF9D000F7DEB /* shuffling-cards.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4B728B4BF9D000F7DEB /* shuffling-cards.mp3 */; };
+		E7CBB4BA28B4C2D0000F7DEB /* background-jazz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4B928B4C2CF000F7DEB /* background-jazz.mp3 */; };
+		E7CBB4BC28B4C550000F7DEB /* card-hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4BB28B4C550000F7DEB /* card-hit.mp3 */; };
+		E7CBB4BE28B4C694000F7DEB /* chips.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4BD28B4C694000F7DEB /* chips.mp3 */; };
+		E7CBB4C028B4C74A000F7DEB /* win-Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4BF28B4C74A000F7DEB /* win-Sound.wav */; };
+		E7CBB4C228B4C94D000F7DEB /* lose-Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4C128B4C94D000F7DEB /* lose-Sound.wav */; };
+		E7CBB4C428B4CA04000F7DEB /* game-Over.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4C328B4CA04000F7DEB /* game-Over.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +46,13 @@
 		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		E7CBB4B228B49B4D000F7DEB /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 		E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		E7CBB4B728B4BF9D000F7DEB /* shuffling-cards.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shuffling-cards.mp3"; sourceTree = "<group>"; };
+		E7CBB4B928B4C2CF000F7DEB /* background-jazz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background-jazz.mp3"; sourceTree = "<group>"; };
+		E7CBB4BB28B4C550000F7DEB /* card-hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "card-hit.mp3"; sourceTree = "<group>"; };
+		E7CBB4BD28B4C694000F7DEB /* chips.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chips.mp3; sourceTree = "<group>"; };
+		E7CBB4BF28B4C74A000F7DEB /* win-Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "win-Sound.wav"; sourceTree = "<group>"; };
+		E7CBB4C128B4C94D000F7DEB /* lose-Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "lose-Sound.wav"; sourceTree = "<group>"; };
+		E7CBB4C328B4CA04000F7DEB /* game-Over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game-Over.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +94,7 @@
 		E7125E2C289CE1EA00ED1858 /* BlackJack */ = {
 			isa = PBXGroup;
 			children = (
+				E7CBB4B628B4BF0B000F7DEB /* Sounds */,
 				DA79E36D28AAC2A70062FABB /* Helper */,
 				E78151EF28A25F3D00B7C9D3 /* Models */,
 				E78151EE28A25F3000B7C9D3 /* Views */,
@@ -119,6 +134,20 @@
 				E7CBB4B228B49B4D000F7DEB /* Achievements.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E7CBB4B628B4BF0B000F7DEB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E7CBB4C328B4CA04000F7DEB /* game-Over.wav */,
+				E7CBB4C128B4C94D000F7DEB /* lose-Sound.wav */,
+				E7CBB4BF28B4C74A000F7DEB /* win-Sound.wav */,
+				E7CBB4BD28B4C694000F7DEB /* chips.mp3 */,
+				E7CBB4BB28B4C550000F7DEB /* card-hit.mp3 */,
+				E7CBB4B928B4C2CF000F7DEB /* background-jazz.mp3 */,
+				E7CBB4B728B4BF9D000F7DEB /* shuffling-cards.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +208,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7CBB4C028B4C74A000F7DEB /* win-Sound.wav in Resources */,
+				E7CBB4BE28B4C694000F7DEB /* chips.mp3 in Resources */,
+				E7CBB4BA28B4C2D0000F7DEB /* background-jazz.mp3 in Resources */,
 				E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */,
 				E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */,
+				E7CBB4B828B4BF9D000F7DEB /* shuffling-cards.mp3 in Resources */,
+				E7CBB4C428B4CA04000F7DEB /* game-Over.wav in Resources */,
+				E7CBB4BC28B4C550000F7DEB /* card-hit.mp3 in Resources */,
+				E7CBB4C228B4C94D000F7DEB /* lose-Sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

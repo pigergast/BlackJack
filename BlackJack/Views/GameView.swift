@@ -15,7 +15,7 @@ struct GameView: View {
     @State var roundsWon : Int = UserDefaults.standard.integer(forKey: "roundsWon")
     @State var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
     @State var playerHand: [card] = []
-    @State var playerMoney : Double = 600
+    @State var playerMoney : Double = 100
     @State private var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
     @State var betAmount: Double = 10
     @State var showIntro = true
@@ -27,6 +27,7 @@ struct GameView: View {
     @State var doubleAvailable = true
     @Environment(\.presentationMode) var presentationMode: Binding
     func lose(){
+        playSound(sound: "lose-Sound", type: "wav")
         roundsLost += 1
         UserDefaults.standard.set(roundsLost, forKey: "roundsLost")
         roundBust = true
@@ -36,12 +37,19 @@ struct GameView: View {
         else{
             playerMoney -= betAmount
         }
-        if(playerMoney <= 0)
+        if(playerMoney >= 10 && playerMoney < 20)
+        {
+            betAmount = 10
+        }
+        if(playerMoney <= 0 || playerMoney <= 10)
         {
             gameLoss = true
         }
     }
-    
+    func startMusic() {
+        playBackgroundSound(sound: "background-jazz", type: "mp3")
+
+    }
     func checkUpdateHighscore(){
         if (playerMoney >  highscore.last ?? 100)
         {
@@ -51,6 +59,8 @@ struct GameView: View {
     }
     
     func handWin() {
+        playSound(sound: "win-Sound", type: "wav")
+
         roundsWon += 1
         UserDefaults.standard.set(roundsWon, forKey: "roundsWon")
         roundWin = true
@@ -113,12 +123,16 @@ struct GameView: View {
     }
     
     func newGame(){
+        if(gameLoss == true){
+            playSound(sound: "game-Over", type: "wav")
+        }
         gameLoss = false
         playerMoney = 100
         newRound()
     }
     
     func newRound(){
+        playSound(sound: "shuffling-cards", type: "mp3")
         gameDeck.newDeck()
         dealerHand  = []
         playerHand = []
@@ -133,8 +147,10 @@ struct GameView: View {
     }
     
     func hit() {
+
         if(!roundBust && !roundWin && !doubleDown)
         {
+            playSound(sound: "card-hit", type: "mp3")
             doubleAvailable = false
             withAnimation (.easeInOut(duration: 0.5)){
                 playerHand.append(gameDeck.drawCard())
@@ -142,7 +158,9 @@ struct GameView: View {
             checkPlayerStatus()
         }
     }
-    
+    init(){
+        startMusic()
+    }
     var body: some View {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color.black]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
@@ -211,13 +229,14 @@ struct GameView: View {
                 HStack{
                     Button {
                         betAmount = 10
+                        playSound(sound: "chips", type: "mp3")
                     } label: {
                         Text("Bet 10")
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(width: 80, height: 30)
-                                    .opacity((betAmount == 10) ? 1.0 : 0.3 )
+                                    .opacity((betAmount == 10 || playerMoney < 20) ? 1.0 : 0.3 )
                                     .animation(.easeInOut)
                             )
                     }
@@ -239,14 +258,21 @@ struct GameView: View {
                     }
                     Spacer()
                     Button {
+                        if(playerMoney >= 20){
                         betAmount = 20
-                    } label: {
+                        playSound(sound: "chips", type: "mp3")
+                        }
+                        else{
+                            betAmount = 10
+                        }
+                        }
+                        label: {
                         Text("Bet 20")
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
                                 Capsule().frame(width: 80, height: 30)
-                                    .opacity((betAmount == 20) ? 1.0 : 0.3 )
+                                    .opacity((betAmount == 20 && playerMoney >= 20) ? 1.0 : 0.3 )
                                     .animation(.easeInOut)
                             )
                     }
@@ -339,6 +365,7 @@ struct GameView: View {
                 }
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+        
     }
 }
 
