@@ -16,7 +16,10 @@
 		E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E31289CE1ED00ED1858 /* Assets.xcassets */; };
 		E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */; };
 		E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E3B289CE20700ED1858 /* MenuView.swift */; };
+		E713884E28B4DD49001DA901 /* leaderboard.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E713884D28B4DD49001DA901 /* leaderboard.mp3 */; };
+		E713885028B4DE6D001DA901 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E713884F28B4DE6D001DA901 /* tutorial.mp3 */; };
 		E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73B826428AF5FE100588A2E /* CardDeck.swift */; };
+		E75724EF28B4D39400727721 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75724EE28B4D39400727721 /* TutorialView.swift */; };
 		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
 		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
 		E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B228B49B4D000F7DEB /* Achievements.swift */; };
@@ -41,7 +44,10 @@
 		E7125E31289CE1ED00ED1858 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7125E34289CE1ED00ED1858 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7125E3B289CE20700ED1858 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E713884D28B4DD49001DA901 /* leaderboard.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leaderboard.mp3; sourceTree = "<group>"; };
+		E713884F28B4DE6D001DA901 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
 		E73B826428AF5FE100588A2E /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
+		E75724EE28B4D39400727721 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		E7CBB4B228B49B4D000F7DEB /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 				DA79E36B28AAB61D0062FABB /* GameView.swift */,
 				E73B826428AF5FE100588A2E /* CardDeck.swift */,
 				E7AB2EC928B2217300205067 /* LeaderboardView.swift */,
+				E75724EE28B4D39400727721 /* TutorialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 		E7CBB4B628B4BF0B000F7DEB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E713884F28B4DE6D001DA901 /* tutorial.mp3 */,
+				E713884D28B4DD49001DA901 /* leaderboard.mp3 */,
 				E7CBB4C328B4CA04000F7DEB /* game-Over.wav */,
 				E7CBB4C128B4C94D000F7DEB /* lose-Sound.wav */,
 				E7CBB4BF28B4C74A000F7DEB /* win-Sound.wav */,
@@ -214,7 +223,9 @@
 				E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */,
 				E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */,
 				E7CBB4B828B4BF9D000F7DEB /* shuffling-cards.mp3 in Resources */,
+				E713885028B4DE6D001DA901 /* tutorial.mp3 in Resources */,
 				E7CBB4C428B4CA04000F7DEB /* game-Over.wav in Resources */,
+				E713884E28B4DD49001DA901 /* leaderboard.mp3 in Resources */,
 				E7CBB4BC28B4C550000F7DEB /* card-hit.mp3 in Resources */,
 				E7CBB4C228B4C94D000F7DEB /* lose-Sound.wav in Resources */,
 			);
@@ -228,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */,
+				E75724EF28B4D39400727721 /* TutorialView.swift in Sources */,
 				E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */,
 				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,

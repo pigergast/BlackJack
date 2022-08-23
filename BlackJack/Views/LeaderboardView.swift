@@ -9,12 +9,13 @@ import SwiftUI
 
 struct LeaderboardView: View {
     var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
-    var roundsWon : Int = UserDefaults.standard.integer(forKey: "roundsWon")
+    var roundsWon : Int =  UserDefaults.standard.integer(forKey: "roundsWon")
     var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
     var scoreDisplay: [Double]
     let asianCars = ["Honda","Nissan","Suzuki"]
     init() {
        scoreDisplay = highscore.reversed()
+        playSound2(sound: "leaderboard", type: "wav")
     }
         
     var body: some View {
@@ -25,7 +26,7 @@ struct LeaderboardView: View {
                         HStack {
                         Image(systemName: "list.number").foregroundColor(.blue)
                             .font(.system(size:30))
-                            Text("Your Highscores")
+                            Text("Your Past Highscores")
                         })  {
                         ForEach(0 ..< scoreDisplay.count) {
                             Text("\(Int(scoreDisplay[$0]))$")
@@ -49,11 +50,11 @@ struct LeaderboardView: View {
                                     .opacity(roundsWon >= gold.requirement ? 1 : 0.3)
                                     .foregroundColor(roundsWon >= gold.requirement ? .blue : .gray)
                             Text("\(rich.achievementText)\n\(rich.requirementText)" )
-                                .opacity(Int(scoreDisplay[0]) >= rich.requirement ? 1 : 0.3)
-                                .foregroundColor(Int(scoreDisplay[0]) >= rich.requirement ? .blue : .gray)
+                                .opacity(Int(scoreDisplay.first ?? 0.00 ) >= rich.requirement ? 1 : 0.3)
+                                .foregroundColor(Int(scoreDisplay.first ?? 0.00) >= rich.requirement ? .blue : .gray)
                             Text("\(richer.achievementText)\n\(richer.requirementText)" )
-                                .opacity(Int(scoreDisplay[0]) >= richer.requirement ? 1 : 0.3)
-                                .foregroundColor(Int(scoreDisplay[0]) >= richer.requirement ? .blue : .gray)
+                                .opacity(Int(scoreDisplay.first ?? 0.00) >= richer.requirement ? 1 : 0.3)
+                                .foregroundColor(Int(scoreDisplay.first ?? 0.00) >= richer.requirement ? .blue : .gray)
                             
                             }
                     Section(header:

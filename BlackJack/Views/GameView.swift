@@ -46,10 +46,7 @@ struct GameView: View {
             gameLoss = true
         }
     }
-    func startMusic() {
-        playBackgroundSound(sound: "background-jazz", type: "mp3")
 
-    }
     func checkUpdateHighscore(){
         if (playerMoney >  highscore.last ?? 100)
         {
@@ -123,9 +120,7 @@ struct GameView: View {
     }
     
     func newGame(){
-        if(gameLoss == true){
-            playSound(sound: "game-Over", type: "wav")
-        }
+
         gameLoss = false
         playerMoney = 100
         newRound()
@@ -158,9 +153,7 @@ struct GameView: View {
             checkPlayerStatus()
         }
     }
-    init(){
-        startMusic()
-    }
+
     var body: some View {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color.black]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
@@ -295,9 +288,11 @@ struct GameView: View {
                     }
                     Spacer()
                     Button {
+                        if(doubleAvailable == true){
                         hit()
                         doubleDown = true
                         doubleAvailable = false
+                        }
                     } label: {
                         Text("Double")
                             .font(.system(size: 22, weight: .heavy))
@@ -326,7 +321,7 @@ struct GameView: View {
                 }
             }
             Rectangle().fill(.ultraThinMaterial).ignoresSafeArea()
-                .opacity(showIntro ? 1 : 0)
+                .opacity((showIntro || gameLoss) ? 1 : 0)
             if(showIntro){
                 Button {
                     showIntro = false
@@ -362,7 +357,7 @@ struct GameView: View {
                                 
                             }
                         }
-                }
+                }.onAppear{ playSound3(sound: "game-Over", type: "wav")}
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
         

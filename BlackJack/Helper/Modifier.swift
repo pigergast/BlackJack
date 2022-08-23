@@ -40,4 +40,11 @@ struct LeaderboardModifier: ViewModifier {
         }
     }
 }
+struct TutorialModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content.frame(width: 200, height: 75, alignment: .center).overlay {
+            Text("How to play").foregroundColor(.white)
+        }
+    }
+}
 
