@@ -156,7 +156,7 @@ struct GameView: View {
 
     var body: some View {
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color.black]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
+            RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color("LightGreen")]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
             VStack{
                 HStack {
                     Button(action: {
@@ -270,7 +270,7 @@ struct GameView: View {
                             )
                     }
                 }.padding(.horizontal, 10)
-                Spacer()
+                Spacer(minLength: 30)
                 HStack{
                     Spacer()
                     Button {
@@ -280,7 +280,7 @@ struct GameView: View {
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
-                                Capsule().frame(minWidth: 50, idealWidth: 70, maxWidth: 100, minHeight: 35)
+                                Capsule().frame(minWidth: 50, idealWidth: 70, maxWidth: 100, minHeight: 50)
                                     .foregroundColor((doubleDown || roundBust || roundWin) ? .red : .green)
                                     .animation(.easeInOut)
                                 
@@ -298,7 +298,7 @@ struct GameView: View {
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
-                                Capsule().frame(minWidth: 100, minHeight: 35)
+                                Capsule().frame(minWidth: 100, minHeight: 50)
                                     .foregroundColor((doubleAvailable && !roundWin && !roundBust) ? .green : .red)
                                     .animation(.easeInOut)
                                 
@@ -312,7 +312,7 @@ struct GameView: View {
                             .font(.system(size: 22, weight: .heavy))
                             .foregroundColor(.black)
                             .background(
-                                Capsule().frame(minWidth: 100, minHeight: 35)
+                                Capsule().frame(minWidth: 100, minHeight: 50)
                                     .foregroundColor((roundWin || roundBust) ? .red : .green)
                                     .animation(.easeInOut)
                             )

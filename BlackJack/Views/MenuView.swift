@@ -11,7 +11,7 @@ struct MenuView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color.black]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
+                RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color("LightGreen")]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
                 VStack {
                     NavigationLink(destination: GameView().onAppear{playSound2(sound: "background-jazz", type: "mp3")}) { Capsule().foregroundColor(Color("CrimsonRed")).modifier(PlayModifier())}
                     NavigationLink(destination: LeaderboardView().onAppear{
