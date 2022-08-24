@@ -22,6 +22,7 @@ struct continueGame : Codable{
     var continueTrue: Bool
 }
 struct GameView: View {
+    @Binding var easyMode: Bool
     @State var gameDeck = Deck()
     @State var dealerHand :[card] = []
     @Binding var roundsWon : Int
@@ -131,7 +132,7 @@ struct GameView: View {
     func dealerAction() {
         if(!roundBust && !roundWin)
         {
-            while(handValue(hand: dealerHand) < 17){
+            while(handValue(hand: dealerHand) < (easyMode ? 14 : 17)){
                 withAnimation (.easeInOut(duration: 0.5)){
                     dealerHand.append(gameDeck.drawCard())
                 }
@@ -150,6 +151,10 @@ struct GameView: View {
             }
             if (handValue(hand: playerHand) > handValue(hand: dealerHand))
             {
+                handWin()
+                return
+            }
+            else if((handValue(hand: playerHand) == handValue(hand: dealerHand)) && easyMode) {
                 handWin()
                 return
             }
@@ -449,6 +454,6 @@ extension GameView{
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(roundsWon: .constant(0), roundsLost: .constant(0), highscore: .constant([]), progressSave: .constant(continueGame(gameDeck: Deck(), dealerHand: [], playerHand: [], showIntro: true, playerMoney: 100, betAmount: 10, gameLoss: false, gameWin: false, roundBust: false, roundWin: false, doubleDown: false, doubleAvailable: true, continueTrue: false)))
+        GameView(easyMode: .constant(false), roundsWon: .constant(0), roundsLost: .constant(0), highscore: .constant([]), progressSave: .constant(continueGame(gameDeck: Deck(), dealerHand: [], playerHand: [], showIntro: true, playerMoney: 100, betAmount: 10, gameLoss: false, gameWin: false, roundBust: false, roundWin: false, doubleDown: false, doubleAvailable: true, continueTrue: false)))
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DifficultySettingView: View {
-    @State var easyMode = true
+    @Binding var easyMode: Bool
     var body: some View {
         ZStack{
             Color("CasinoGreen")
@@ -17,6 +17,7 @@ struct DifficultySettingView: View {
                     Section(header: Text("Easy")){
                         Button {
                             easyMode.toggle()
+                            UserDefaults.standard.set(easyMode, forKey: "easyMode")
                         } label: {
                             Text(easyMode ? "Easy Mode: On" : "Easy Mode: Off")
                         }
@@ -27,6 +28,7 @@ struct DifficultySettingView: View {
                     Section(header: Text("Real Life")){
                         Button {
                             easyMode.toggle()
+                            UserDefaults.standard.set(easyMode, forKey: "easyMode")
                         } label: {
                             Text(!easyMode ? "Real Life Mode: On" : "Real Life Mode: Off")
                         }
@@ -41,6 +43,6 @@ struct DifficultySettingView: View {
 
 struct DifficultySettingView_Previews: PreviewProvider {
     static var previews: some View {
-        DifficultySettingView()
+        DifficultySettingView(easyMode: .constant(false))
     }
 }

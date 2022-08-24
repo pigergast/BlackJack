@@ -50,6 +50,13 @@ struct LeaderboardModifier: ViewModifier {
         }
     }
 }
+struct SettingModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content.frame(width: 200, height: 75, alignment: .center).overlay {
+            Text("Difficulty Setting").foregroundColor(.white)
+        }
+    }
+}
 struct TutorialModifier: ViewModifier {
     func body(content: Content) -> some View {
         content.frame(width: 200, height: 75, alignment: .center).overlay {
