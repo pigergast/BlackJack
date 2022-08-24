@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let decoder = JSONDecoder()
+
 struct CardModifier: ViewModifier{
     func body(content: Content) -> some View {
            content
@@ -15,6 +17,7 @@ struct CardModifier: ViewModifier{
             .shadow(color: .black, radius: 3)
        }
 }
+
 struct CapsuleModifier: ViewModifier{
     func body(content: Content) -> some View {
            content
@@ -29,7 +32,14 @@ struct CapsuleModifier: ViewModifier{
 struct PlayModifier: ViewModifier {
     func body(content: Content) -> some View {
         content.frame(width: 200, height: 75, alignment: .center).overlay {
-            Text("Play").foregroundColor(.white)
+            Text("New Game").foregroundColor(.white)
+        }
+    }
+}
+struct ContinueModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content.frame(width: 200, height: 75, alignment: .center).overlay {
+            Text("Continue").foregroundColor(.white)
         }
     }
 }

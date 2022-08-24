@@ -6,17 +6,30 @@
 //
 
 import SwiftUI
-
+struct continueGame : Codable{
+    var gameDeck : Deck
+    var dealerHand :[card]
+    var playerHand : [card]
+    var showIntro: Bool
+    var playerMoney : Double
+    var betAmount: Double
+    var gameLoss : Bool
+    var gameWin : Bool
+    var roundBust : Bool
+    var roundWin : Bool
+    var doubleDown : Bool
+    var doubleAvailable : Bool
+    var continueTrue: Bool
+}
 struct GameView: View {
     @State var gameDeck = Deck()
     @State var dealerHand :[card] = []
-    //@State var playerHand :[card] =
-    //(UserDefaults.standard.object(forKey: "playerHand") as?  [card] ?? [])
-    @State var roundsWon : Int = UserDefaults.standard.integer(forKey: "roundsWon")
-    @State var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
+    @Binding var roundsWon : Int
+    @Binding var roundsLost : Int
     @State var playerHand: [card] = []
-    @State var playerMoney : Double = 100
-    @State private var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
+    @State var playerMoney : Double = 200
+    @Binding var highscore: [Double]
+    @Binding var progressSave: continueGame
     @State var betAmount: Double = 10
     @State var showIntro = true
     @State var gameLoss = false
@@ -24,8 +37,33 @@ struct GameView: View {
     @State var roundBust = false
     @State var roundWin = false
     @State var doubleDown = false
+    @State var continuePressed = false
     @State var doubleAvailable = true
     @Environment(\.presentationMode) var presentationMode: Binding
+    
+    func resumeGame(save: continueGame){
+        self.gameDeck = save.gameDeck
+        self.dealerHand = save.dealerHand
+        self.playerHand = save.playerHand
+        self.playerMoney = save.playerMoney
+        self.betAmount = save.betAmount
+        self.showIntro = save.showIntro
+        self.gameLoss = save.gameLoss
+        self.gameWin = save.gameWin
+        self.roundBust = save.roundBust
+        self.roundWin = save.roundWin
+        self.doubleDown = save.doubleDown
+        self.doubleAvailable = save.doubleAvailable
+    }
+    
+    func saveGame(){
+        progressSave = continueGame(gameDeck: gameDeck, dealerHand: dealerHand, playerHand: playerHand, showIntro: showIntro, playerMoney: playerMoney, betAmount: betAmount, gameLoss: gameLoss, gameWin: gameWin, roundBust: roundBust, roundWin: roundWin, doubleDown: doubleDown, doubleAvailable: doubleAvailable, continueTrue: true)
+        let encoder = JSONEncoder()
+           if let data = try? encoder.encode(continueGame(gameDeck: gameDeck, dealerHand: dealerHand, playerHand: playerHand, showIntro: showIntro, playerMoney: playerMoney, betAmount: betAmount, gameLoss: gameLoss, gameWin: gameWin, roundBust: roundBust, roundWin: roundWin, doubleDown: doubleDown, doubleAvailable: doubleAvailable, continueTrue: true)) {
+               UserDefaults.standard.set(data, forKey: "gameSave")
+           }
+     
+    }
     func lose(){
         playSound(sound: "lose-Sound", type: "wav")
         roundsLost += 1
@@ -45,8 +83,9 @@ struct GameView: View {
         {
             gameLoss = true
         }
+        saveGame()
     }
-
+    
     func checkUpdateHighscore(){
         if (playerMoney >  highscore.last ?? 100)
         {
@@ -57,7 +96,7 @@ struct GameView: View {
     
     func handWin() {
         playSound(sound: "win-Sound", type: "wav")
-
+        
         roundsWon += 1
         UserDefaults.standard.set(roundsWon, forKey: "roundsWon")
         roundWin = true
@@ -80,12 +119,14 @@ struct GameView: View {
             }
         }
         checkUpdateHighscore()
+        saveGame()
     }
     
     func checkPlayerStatus() {
         if (handValue(hand: playerHand) > 21){
             lose()
         }
+        saveGame()
     }
     func dealerAction() {
         if(!roundBust && !roundWin)
@@ -120,7 +161,6 @@ struct GameView: View {
     }
     
     func newGame(){
-
         gameLoss = false
         playerMoney = 100
         newRound()
@@ -139,10 +179,11 @@ struct GameView: View {
             playerHand.append(gameDeck.drawCard())
             dealerHand.append(gameDeck.drawCard())
         }
+        saveGame()
     }
     
     func hit() {
-
+        
         if(!roundBust && !roundWin && !doubleDown)
         {
             playSound(sound: "card-hit", type: "mp3")
@@ -151,9 +192,10 @@ struct GameView: View {
                 playerHand.append(gameDeck.drawCard())
             }
             checkPlayerStatus()
+            saveGame()
         }
     }
-
+    
     var body: some View {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [Color("CasinoGreen"), Color("LightGreen")]), center: .center, startRadius: 300, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/).ignoresSafeArea(.all)
@@ -169,7 +211,7 @@ struct GameView: View {
                             .background(Color.white)
                             .clipShape(Circle())
                     }
-                .padding(.leading,10)
+                    .padding(.leading,10)
                     Spacer()
                 }
                 HStack {
@@ -252,23 +294,23 @@ struct GameView: View {
                     Spacer()
                     Button {
                         if(playerMoney >= 20){
-                        betAmount = 20
-                        playSound(sound: "chips", type: "mp3")
+                            betAmount = 20
+                            playSound(sound: "chips", type: "mp3")
                         }
                         else{
                             betAmount = 10
                         }
-                        }
-                        label: {
-                        Text("Bet 20")
-                            .font(.system(size: 22, weight: .heavy))
-                            .foregroundColor(.black)
-                            .background(
-                                Capsule().frame(width: 80, height: 30)
-                                    .opacity((betAmount == 20 && playerMoney >= 20) ? 1.0 : 0.3 )
-                                    .animation(.easeInOut)
-                            )
                     }
+                label: {
+                    Text("Bet 20")
+                        .font(.system(size: 22, weight: .heavy))
+                        .foregroundColor(.black)
+                        .background(
+                            Capsule().frame(width: 80, height: 30)
+                                .opacity((betAmount == 20 && playerMoney >= 20) ? 1.0 : 0.3 )
+                                .animation(.easeInOut)
+                        )
+                }
                 }.padding(.horizontal, 10)
                 Spacer(minLength: 30)
                 HStack{
@@ -289,9 +331,9 @@ struct GameView: View {
                     Spacer()
                     Button {
                         if(doubleAvailable == true){
-                        hit()
-                        doubleDown = true
-                        doubleAvailable = false
+                            hit()
+                            doubleDown = true
+                            doubleAvailable = false
                         }
                     } label: {
                         Text("Double")
@@ -324,6 +366,7 @@ struct GameView: View {
                 .opacity((showIntro || gameLoss) ? 1 : 0)
             if(showIntro){
                 Button {
+                    continuePressed = true
                     showIntro = false
                     newRound()
                     
@@ -331,6 +374,20 @@ struct GameView: View {
                     Capsule().frame(width: 150, height: 100).foregroundColor(.yellow)
                         .overlay {
                             Text("Start")
+                                .font(.system(size: 22, weight: .heavy))
+                                .foregroundColor(.black)
+                        }
+                }
+            }
+            if(progressSave.continueTrue && !continuePressed){
+                Button {
+                    continuePressed = true
+                    resumeGame(save: progressSave)
+                    
+                } label: {
+                    Capsule().frame(width: 150, height: 100).foregroundColor(.yellow)
+                        .overlay {
+                            Text("Continue")
                                 .font(.system(size: 22, weight: .heavy))
                                 .foregroundColor(.black)
                         }
@@ -392,6 +449,6 @@ extension GameView{
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        GameView(roundsWon: .constant(0), roundsLost: .constant(0), highscore: .constant([]), progressSave: .constant(continueGame(gameDeck: Deck(), dealerHand: [], playerHand: [], showIntro: true, playerMoney: 100, betAmount: 10, gameLoss: false, gameWin: false, roundBust: false, roundWin: false, doubleDown: false, doubleAvailable: true, continueTrue: false)))
     }
 }

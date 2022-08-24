@@ -22,6 +22,7 @@
 		E75724EF28B4D39400727721 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75724EE28B4D39400727721 /* TutorialView.swift */; };
 		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
 		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
+		E7ACBAA428B6470D00F50888 /* DifficultySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ACBAA328B6470D00F50888 /* DifficultySettingView.swift */; };
 		E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B228B49B4D000F7DEB /* Achievements.swift */; };
 		E7CBB4B528B4B5BA000F7DEB /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */; };
 		E7CBB4B828B4BF9D000F7DEB /* shuffling-cards.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7CBB4B728B4BF9D000F7DEB /* shuffling-cards.mp3 */; };
@@ -50,6 +51,7 @@
 		E75724EE28B4D39400727721 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		E7ACBAA328B6470D00F50888 /* DifficultySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySettingView.swift; sourceTree = "<group>"; };
 		E7CBB4B228B49B4D000F7DEB /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 		E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		E7CBB4B728B4BF9D000F7DEB /* shuffling-cards.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shuffling-cards.mp3"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				E73B826428AF5FE100588A2E /* CardDeck.swift */,
 				E7AB2EC928B2217300205067 /* LeaderboardView.swift */,
 				E75724EE28B4D39400727721 /* TutorialView.swift */,
+				E7ACBAA328B6470D00F50888 /* DifficultySettingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,
 				DA79E36C28AAB61D0062FABB /* GameView.swift in Sources */,
+				E7ACBAA428B6470D00F50888 /* DifficultySettingView.swift in Sources */,
 				DAA5480E28A94B430097953E /* Deck.swift in Sources */,
 				E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */,
 				DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */,

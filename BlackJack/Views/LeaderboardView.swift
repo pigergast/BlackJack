@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct LeaderboardView: View {
-    var highscore: [Double] = (UserDefaults.standard.object(forKey: "highScoreList") as? [Double] ?? [])
-    var roundsWon : Int =  UserDefaults.standard.integer(forKey: "roundsWon")
-    var roundsLost : Int = UserDefaults.standard.integer(forKey: "roundsLost")
-    var scoreDisplay: [Double]
-    let asianCars = ["Honda","Nissan","Suzuki"]
-    init() {
-       scoreDisplay = highscore.reversed()
-        playSound2(sound: "leaderboard", type: "wav")
+    @Binding var highScore: [Double]
+    @Binding var roundsWon : Int
+    @Binding var roundsLost : Int
+    var scoreDisplay: [Double]  {
+        return highScore.reversed()
     }
-        
     var body: some View {
             NavigationView {
                 List {
@@ -75,6 +71,6 @@ struct LeaderboardView: View {
 
 struct LeaderboardView_Previews: PreviewProvider {
     static var previews: some View {
-        LeaderboardView()
+        LeaderboardView(highScore: .constant([]), roundsWon: .constant(0), roundsLost: .constant(0))
     }
 }

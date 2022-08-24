@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-enum Suits: String, CaseIterable{
+enum Suits: String, CaseIterable, Codable{
     case SPADE
     case HEART
     case DIAMOND
     case CLUB
 }
 
-enum Ranks: String, CaseIterable{
+enum Ranks: String, CaseIterable, Codable{
     case TWO
     case THREE
     case FOUR
@@ -31,7 +31,7 @@ enum Ranks: String, CaseIterable{
     case ACE
 }
 
-struct card: Equatable, Hashable{
+struct card: Equatable, Hashable, Codable{
     var suit: Suits
     var rank: Ranks
     var imageName: String {
@@ -41,36 +41,6 @@ struct card: Equatable, Hashable{
         Image(imageName)
     }
     
-    func cardValue(c: card) -> Int {
-        switch c.rank{
-        case .TWO:
-            return 2
-        case .THREE:
-            return 3
-        case .FOUR:
-            return 4
-        case .FIVE:
-            return 5
-        case .SIX:
-            return 6
-        case .SEVEN:
-            return 7
-        case .EIGHT:
-            return 8
-        case .NINE:
-            return 9
-        case .TEN:
-            return 10
-        case .JACK:
-            return 10
-        case .QUEEN:
-            return 10
-        case .KING:
-            return 10
-        case .ACE:
-            return 11
-        }
-    }
 }
 
 

@@ -12,7 +12,6 @@ func generateDeck() -> [card]{
     for suit in Suits.allCases{
         for rank in Ranks.allCases{
             cards.append(card.init(suit: suit, rank: rank))
-            print(String(describing: rank) + String(describing: suit))
         }
     }
     return cards

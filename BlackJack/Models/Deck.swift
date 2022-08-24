@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Deck {
+struct Deck: Codable {
     var cards : [card]
     
     init() {
