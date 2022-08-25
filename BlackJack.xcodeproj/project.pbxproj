@@ -11,6 +11,7 @@
 		DA79E36C28AAB61D0062FABB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA79E36B28AAB61D0062FABB /* GameView.swift */; };
 		DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA79E37228AAC5BB0062FABB /* Modifier.swift */; };
 		DAA5480E28A94B430097953E /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5480D28A94B430097953E /* Deck.swift */; };
+		E7072B4A28B7687B00EDC379 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7072B4928B7687B00EDC379 /* Save.swift */; };
 		E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */; };
 		E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E2F289CE1EA00ED1858 /* ContentView.swift */; };
 		E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E31289CE1ED00ED1858 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		DA79E36B28AAB61D0062FABB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		DA79E37228AAC5BB0062FABB /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		DAA5480D28A94B430097953E /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		E7072B4928B7687B00EDC379 /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		E7125E2A289CE1EA00ED1858 /* BlackJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackJackApp.swift; sourceTree = "<group>"; };
 		E7125E2F289CE1EA00ED1858 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				DAA5480D28A94B430097953E /* Deck.swift */,
 				DA79E36928AAA4E40062FABB /* GameFunctions.swift */,
 				E7CBB4B228B49B4D000F7DEB /* Achievements.swift */,
+				E7072B4928B7687B00EDC379 /* Save.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				E75724EF28B4D39400727721 /* TutorialView.swift in Sources */,
 				E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */,
 				E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */,
+				E7072B4A28B7687B00EDC379 /* Save.swift in Sources */,
 				E7125E3C289CE20700ED1858 /* MenuView.swift in Sources */,
 				DA79E36C28AAB61D0062FABB /* GameView.swift in Sources */,
 				E7ACBAA428B6470D00F50888 /* DifficultySettingView.swift in Sources */,

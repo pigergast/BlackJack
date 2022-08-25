@@ -6,21 +6,7 @@
 //
 
 import SwiftUI
-struct continueGame : Codable{
-    var gameDeck : Deck
-    var dealerHand :[card]
-    var playerHand : [card]
-    var showIntro: Bool
-    var playerMoney : Double
-    var betAmount: Double
-    var gameLoss : Bool
-    var gameWin : Bool
-    var roundBust : Bool
-    var roundWin : Bool
-    var doubleDown : Bool
-    var doubleAvailable : Bool
-    var continueTrue: Bool
-}
+
 struct GameView: View {
     @Binding var easyMode: Bool
     @State var gameDeck = Deck()
@@ -28,7 +14,7 @@ struct GameView: View {
     @Binding var roundsWon : Int
     @Binding var roundsLost : Int
     @State var playerHand: [card] = []
-    @State var playerMoney : Double = 200
+    @State var playerMoney : Double = 100
     @Binding var highscore: [Double]
     @Binding var progressSave: continueGame
     @State var betAmount: Double = 10
