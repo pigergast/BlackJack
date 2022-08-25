@@ -59,7 +59,6 @@ struct GameView: View {
     
     func saveGame(){
         progressSave = continueGame(gameDeck: gameDeck, dealerHand: dealerHand, playerHand: playerHand, showIntro: showIntro, playerMoney: playerMoney, betAmount: betAmount, gameLoss: gameLoss, gameWin: gameWin, roundBust: roundBust, roundWin: roundWin, doubleDown: doubleDown, doubleAvailable: doubleAvailable, continueTrue: true)
-        let encoder = JSONEncoder()
            if let data = try? encoder.encode(continueGame(gameDeck: gameDeck, dealerHand: dealerHand, playerHand: playerHand, showIntro: showIntro, playerMoney: playerMoney, betAmount: betAmount, gameLoss: gameLoss, gameWin: gameWin, roundBust: roundBust, roundWin: roundWin, doubleDown: doubleDown, doubleAvailable: doubleAvailable, continueTrue: true)) {
                UserDefaults.standard.set(data, forKey: "gameSave")
            }

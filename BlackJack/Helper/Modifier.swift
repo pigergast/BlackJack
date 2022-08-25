@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-let decoder = JSONDecoder()
-
 struct CardModifier: ViewModifier{
     func body(content: Content) -> some View {
            content

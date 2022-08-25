@@ -21,6 +21,7 @@
 		E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73B826428AF5FE100588A2E /* CardDeck.swift */; };
 		E75724EF28B4D39400727721 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75724EE28B4D39400727721 /* TutorialView.swift */; };
 		E78151F128A25F4B00B7C9D3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78151F028A25F4B00B7C9D3 /* Card.swift */; };
+		E783BF9428B763E1003EFE38 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783BF9328B763E1003EFE38 /* DataHelper.swift */; };
 		E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB2EC928B2217300205067 /* LeaderboardView.swift */; };
 		E7ACBAA428B6470D00F50888 /* DifficultySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ACBAA328B6470D00F50888 /* DifficultySettingView.swift */; };
 		E7CBB4B328B49B4D000F7DEB /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CBB4B228B49B4D000F7DEB /* Achievements.swift */; };
@@ -50,6 +51,7 @@
 		E73B826428AF5FE100588A2E /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		E75724EE28B4D39400727721 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		E78151F028A25F4B00B7C9D3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E783BF9328B763E1003EFE38 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		E7AB2EC928B2217300205067 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		E7ACBAA328B6470D00F50888 /* DifficultySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySettingView.swift; sourceTree = "<group>"; };
 		E7CBB4B228B49B4D000F7DEB /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				DA79E37228AAC5BB0062FABB /* Modifier.swift */,
 				E7CBB4B428B4B5BA000F7DEB /* SoundPlayer.swift */,
+				E783BF9328B763E1003EFE38 /* DataHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				E7ACBAA428B6470D00F50888 /* DifficultySettingView.swift in Sources */,
 				DAA5480E28A94B430097953E /* Deck.swift in Sources */,
 				E73B826528AF5FE100588A2E /* CardDeck.swift in Sources */,
+				E783BF9428B763E1003EFE38 /* DataHelper.swift in Sources */,
 				DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */,
 				E7AB2ECA28B2217300205067 /* LeaderboardView.swift in Sources */,
 				E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */,

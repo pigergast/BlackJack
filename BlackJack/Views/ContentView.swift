@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var gameSave: continueGame = try! decoder.decode(continueGame.self, from:(UserDefaults.standard.object(forKey: "gameSave") as? Data ?? Data.init()))
+    @State var gameSave: continueGame = try! decoder.decode(continueGame.self, from:(UserDefaults.standard.object(forKey: "gameSave") as? Data ?? defaultData))
     var body: some View {
         MenuView(gameSave: $gameSave)
     }
