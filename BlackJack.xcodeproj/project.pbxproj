@@ -12,6 +12,7 @@
 		DA79E37328AAC5BB0062FABB /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA79E37228AAC5BB0062FABB /* Modifier.swift */; };
 		DAA5480E28A94B430097953E /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5480D28A94B430097953E /* Deck.swift */; };
 		E7072B4A28B7687B00EDC379 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7072B4928B7687B00EDC379 /* Save.swift */; };
+		E7072B4C28B7866200EDC379 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7072B4B28B7866200EDC379 /* menu.mp3 */; };
 		E7125E2E289CE1EA00ED1858 /* BlackJackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */; };
 		E7125E30289CE1EA00ED1858 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7125E2F289CE1EA00ED1858 /* ContentView.swift */; };
 		E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7125E31289CE1ED00ED1858 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		DA79E37228AAC5BB0062FABB /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		DAA5480D28A94B430097953E /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E7072B4928B7687B00EDC379 /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
+		E7072B4B28B7866200EDC379 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
 		E7125E2A289CE1EA00ED1858 /* BlackJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7125E2D289CE1EA00ED1858 /* BlackJackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackJackApp.swift; sourceTree = "<group>"; };
 		E7125E2F289CE1EA00ED1858 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		E7CBB4B628B4BF0B000F7DEB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E7072B4B28B7866200EDC379 /* menu.mp3 */,
 				E713884F28B4DE6D001DA901 /* tutorial.mp3 */,
 				E713884D28B4DD49001DA901 /* leaderboard.mp3 */,
 				E7CBB4C328B4CA04000F7DEB /* game-Over.wav */,
@@ -228,6 +231,7 @@
 			files = (
 				E7CBB4C028B4C74A000F7DEB /* win-Sound.wav in Resources */,
 				E7CBB4BE28B4C694000F7DEB /* chips.mp3 in Resources */,
+				E7072B4C28B7866200EDC379 /* menu.mp3 in Resources */,
 				E7CBB4BA28B4C2D0000F7DEB /* background-jazz.mp3 in Resources */,
 				E7125E35289CE1ED00ED1858 /* Preview Assets.xcassets in Resources */,
 				E7125E32289CE1ED00ED1858 /* Assets.xcassets in Resources */,

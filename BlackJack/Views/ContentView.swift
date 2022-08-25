@@ -15,7 +15,7 @@ import SwiftUI
 struct ContentView: View {
     @State var gameSave: continueGame = try! decoder.decode(continueGame.self, from:(UserDefaults.standard.object(forKey: "gameSave") as? Data ?? defaultData))
     var body: some View {
-        MenuView(gameSave: $gameSave)
+        MenuView(gameSave: $gameSave).onAppear{playSound2(sound: "menu", type: "mp3")}
     }
 }
 
