@@ -1,12 +1,17 @@
-//
-//  CardDeck.swift
-//  BlackJack
-//
-//  Created by Hieu Le Pham Ngoc on 19/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Le Pham Ngoc Hieu
+ ID: 3877375
+ Created  date: 05/08/2022
+ Last modified: 25/08/2022
+ Acknowledgement: none
+ */
 
 import SwiftUI
-
+//Cosmetic CardDeck View
 struct CardDeck: View {
     var body: some View {
         ZStack {

@@ -1,12 +1,19 @@
-//
-//  Deck.swift
-//  BlackJack
-//
-//  Created by Oggy on 14/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Le Pham Ngoc Hieu
+ ID: 3877375
+ Created  date: 05/08/2022
+ Last modified: 25/08/2022
+ Acknowledgement: None
+ */
 
 import Foundation
 
+
+//Deck struct for use in game logic. Used like a Stack
 struct Deck: Codable {
     var cards : [card]
     
@@ -21,4 +28,3 @@ struct Deck: Codable {
     }
 }
 
-var testDeck = Deck()

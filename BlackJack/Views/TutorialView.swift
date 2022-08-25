@@ -1,11 +1,18 @@
-//
-//  TutorialView.swift
-//  BlackJack
-//
-//  Created by Hieu Le Pham Ngoc on 23/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Le Pham Ngoc Hieu
+ ID: 3877375
+ Created  date: 05/08/2022
+ Last modified: 25/08/2022
+ Acknowledgement: Based on sample code from https://www.hackingwithswift.com/books/ios-swiftui/creating-a-form
+ */
 
 import SwiftUI
+
+//Tutorial view to instruct player on how to play the game
 
 struct TutorialView: View {
     var body: some View {

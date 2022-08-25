@@ -1,12 +1,21 @@
-//
-//  GameFunctions.swift
-//  BlackJack
-//
-//  Created by Oggy on 15/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Le Pham Ngoc Hieu
+ ID: 3877375
+ Created  date: 05/08/2022
+ Last modified: 25/08/2022
+ Acknowledgement: https://brilliant.org/wiki/programming-blackjack/ for basic game logic
+ */
 
 import Foundation
 
+//Functions for use in game logic
+
+
+//Generate a standard deck of 52 cards
 func generateDeck() -> [card]{
     var cards =  [card]()
     for suit in Suits.allCases{
@@ -16,6 +25,8 @@ func generateDeck() -> [card]{
     }
     return cards
 }
+
+//Get the value of a card based on their rank enum
 func cardValue(c: card) -> Int {
     switch c.rank{
     case .TWO:
@@ -46,17 +57,20 @@ func cardValue(c: card) -> Int {
         return 11
     }
 }
+
+//Get the value of a hand of cards
 func handValue(hand: [card]) -> Int{
     var value: Int = 0
     var aceNum : Int = 0
     for card in hand
     {
+        //Count aces
         if (card.rank == Ranks.ACE){
             aceNum += 1
         }
         value += cardValue(c: card)
     }
-    
+    //If the hand is bust but there is an ace, set ace as 1 to lower the hand value
     while(aceNum > 0) {
         if value > 21{
             value -= 10
